@@ -3,6 +3,7 @@ from streamlit_option_menu import option_menu
 import numpy as np
 import datetime
 import pickle
+import uvicorn
 
 #setting up streamlit page
 
@@ -235,3 +236,9 @@ if selected == "About":
     st.subheader(':orange[About :]')
     st.markdown('''**Hello! I'm Vibin, a EEE graduate with a keen interest in data science and analytics.
                 Currently on an exciting journey into the world of data science...**''')            
+    
+    if __name__ == "__main__":
+    port = os.getenv("PORT")
+    if not port:
+        port = 8080
+    uvicorn.run(app, host="0.0.0.0", port=8080)
