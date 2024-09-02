@@ -14,4 +14,4 @@ uvicorn==0.30.6
 gunicorn==23.0.0
 portalocker== 2.10.1
 
-msvc-runtime = 14.40.33807
+Flask ==3.0.3
