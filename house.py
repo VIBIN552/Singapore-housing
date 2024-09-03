@@ -3,7 +3,17 @@ from streamlit_option_menu import option_menu
 import numpy as np
 import datetime
 import pickle
-import uvicorn
+from fast api import FASTAPI
+import os
+import platform
+import sys
+import portalocker
+
+if platform.system() == 'Linux':
+    import fcntl
+
+app = FASTAPI()
+
 
 #setting up streamlit page
 
