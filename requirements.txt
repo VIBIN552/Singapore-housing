@@ -16,4 +16,4 @@ portalocker== 2.10.1
 
 waitress==3.0.0
 
-pywin32 == 306
+pywin32 = 306
