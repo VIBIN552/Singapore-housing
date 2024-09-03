@@ -13,13 +13,7 @@ import portalocker
 
 app = FASTAPI()
 
-with open('Decisiontree.pkl', 'r+') as file:
-    portalocker.lock(file, portalocker.LOCK_EX)
-    # Do your file operations here
-    portalocker.unlock(file)
 
-if os.name != 'nt':  
-    import fcntl
 
 #setting up streamlit page
 
