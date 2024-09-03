@@ -9,11 +9,17 @@ import platform
 import sys
 import portalocker
 
-if platform.system() == 'Linux':
-    import fcntl
+
 
 app = FASTAPI()
 
+with open('Decisiontree.pkl', 'r+') as file:
+    portalocker.lock(file, portalocker.LOCK_EX)
+    # Do your file operations here
+    portalocker.unlock(file)
+
+if os.name != 'nt':  
+    import fcntl
 
 #setting up streamlit page
 
