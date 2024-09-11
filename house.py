@@ -3,12 +3,16 @@ from streamlit_option_menu import option_menu
 import numpy as np
 import datetime
 import pickle
-from flask import Flask, request
 import os
+import fcntl
 
+# Function to lock a file
+def lock_file(file):
+    fcntl.flock(file, fcntl.LOCK_EX)
 
-
-app = Flask(__name__)
+# Function to unlock a file
+def unlock_file(file):
+    fcntl.flock(file, fcntl.LOCK_UN)
 
 
 
