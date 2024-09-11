@@ -3,16 +3,10 @@ from streamlit_option_menu import option_menu
 import numpy as np
 import datetime
 import pickle
-import os
-import fcntl
+ import os
+import uvicorn
 
-# Function to lock a file
-def lock_file(file):
-    fcntl.flock(file, fcntl.LOCK_EX)
 
-# Function to unlock a file
-def unlock_file(file):
-    fcntl.flock(file, fcntl.LOCK_UN)
 
 
 
@@ -248,13 +242,7 @@ if selected == "About":
     st.markdown('''**Hello! I'm Vibin, a EEE graduate with a keen interest in data science and analytics.
                 Currently on an exciting journey into the world of data science...**''')            
     
-    # Start Flask app
-@app.route('/api/predict', methods=['POST'])
-def predict_resale_price():
-    data = request.json
-    # Add your model loading and prediction logic here
-    return {"resale_price": "Predicted price"}
-
-if __name__ == "__main__":
-    port = os.getenv("PORT", 5000)
-    app.run(host="0.0.0.0", port=port)
+   if __name__ == "__main__":
+   
+    port = int(os.getenv("PORT", 8080))
+    uvicorn.run(app, host="0.0.0.0", port=port
