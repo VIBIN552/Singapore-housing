@@ -12,8 +12,7 @@ streamlit-option-menu==0.3.13
 
 uvicorn==0.30.6
 gunicorn==23.0.0
-portalocker== 2.10.1
 
-waitress==3.0.0
+flask ==2.2.0
 
 
