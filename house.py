@@ -3,8 +3,10 @@ from streamlit_option_menu import option_menu
 import numpy as np
 import datetime
 import pickle
- import os
+import os
 import uvicorn
+from waitress import serve
+from your_application import app 
 
 
 
@@ -243,6 +245,4 @@ if selected == "About":
                 Currently on an exciting journey into the world of data science...**''')            
     
    if __name__ == "__main__":
-   
-    port = int(os.getenv("PORT", 8080))
-    uvicorn.run(app, host="0.0.0.0", port=port
+    serve(app, host='0.0.0.0', port=8000)
