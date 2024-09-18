@@ -5,9 +5,13 @@ import datetime
 import pickle
 import os
 import uvicorn
-from waitress import serve
-from your_application import app 
+from flask import Flask
 
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return
 
 
 
@@ -244,5 +248,6 @@ if selected == "About":
     st.markdown('''**Hello! I'm Vibin, a EEE graduate with a keen interest in data science and analytics.
                 Currently on an exciting journey into the world of data science...**''')            
     
-   if __name__ == "__main__":
-    serve(app, host='0.0.0.0', port=8000)
+   
+  if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
