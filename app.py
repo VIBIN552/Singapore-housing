@@ -244,4 +244,9 @@ if selected == "About":
     st.markdown('''**Hello! I'm Vibin, a EEE graduate with a keen interest in data science and analytics.
                 Currently on an exciting journey into the world of data science...**''')            
     
+from flask import Flask
 
+app = Flask(__name__)
+
+if __name__ == "__main__":
+    app.run()
