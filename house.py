@@ -5,13 +5,42 @@ import datetime
 import pickle
 import os
 import uvicorn
-from flask import Flask
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+# Load your trained model (pickle file)
+model_path = 'Decisiontree.pkl'
+
+with open(model_path, 'rb') as f:
+    model = pickle.load(f)
+
 @app.route('/')
 def home():
-    return
+    return "Singapore Resale Flat Prices Prediction API"
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.json
+
+    # Extract features from the JSON payload
+    month = data['month']
+    town = data['town']
+    flat_type = data['flat_type']
+    flat_model = data['flat_model']
+    floor_area_sqm = np.log(data['floor_area_sqm'])
+    remaining_lease = np.log1p(data['remaining_lease'])
+    price_per_sqm = np.log(data['price_per_sqm'])
+
+    # Prepare input features for the model
+    input_features = np.array([[month, town, flat_type, flat_model, floor_area_sqm, remaining_lease, price_per_sqm]])
+
+    # Make prediction
+    prediction = model.predict(input_features)
+    resale_price = np.exp(prediction[0])
+
+    return jsonify({'resale_price': resale_price})
+
 
 
 
@@ -248,6 +277,5 @@ if selected == "About":
     st.markdown('''**Hello! I'm Vibin, a EEE graduate with a keen interest in data science and analytics.
                 Currently on an exciting journey into the world of data science...**''')            
     
-   
-  if __name__ == "__main__":
+   if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
