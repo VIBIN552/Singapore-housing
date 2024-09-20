@@ -5,7 +5,7 @@ import datetime
 import pickle
 import os
 import uvicorn
-from flask import Flask
+
 
 
 
@@ -245,5 +245,4 @@ if selected == "About":
     st.markdown('''**Hello! I'm Vibin, a EEE graduate with a keen interest in data science and analytics.
                 Currently on an exciting journey into the world of data science...**''')            
     
-   if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+  
