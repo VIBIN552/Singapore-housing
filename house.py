@@ -7,7 +7,7 @@ import os
 import uvicorn
 from flask import Flask
 
-app = Flask(__'house.py'__)
+app = Flask(__name__)
 
 @app.route('/')
 def home():
