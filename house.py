@@ -7,7 +7,6 @@ import os
 import uvicorn
 from flask import Flask
 
-app = Flask(__name__)
 
 
 
