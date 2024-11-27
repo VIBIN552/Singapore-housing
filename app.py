@@ -3,8 +3,8 @@ from streamlit_option_menu import option_menu
 import numpy as np
 import datetime
 import pickle
-import os
-import uvicorn
+
+
 
 
 
@@ -21,10 +21,7 @@ st.title("SINGAPORE RESALE FLAT PRICES PREDICTING ")
 with st.sidebar:
     selected = option_menu(
         menu_title="Main Menu",  
-        options=["Home", "Get Prediction", "About"], 
-        icons=['house', "lightbulb", "info-circle"],  
-        default_index=0, 
-        orientation="vertical"
+        options=["Home", "Get Prediction", "About"]
         )
     
 #user input values for selectbox and encoded for respective features
@@ -58,11 +55,9 @@ class option:
                 'TERRACE' : 18,'TYPE S1' : 19,'TYPE S2' : 20}
     
 #set up information for the 'get prediction' menu
-if selected == "Get Prediction":
-    st.write('')
-    st.markdown("<h5 style=color:orange>To Predict the Resale Price of a Flat, Please Provide the Following Information:",unsafe_allow_html=True)
-    st.write('')
 
+if selected == "GET PREDICTION":
+    
     # creted form to get the user input 
     with st.form('prediction'):
         col1,col2=st.columns(2)
@@ -140,8 +135,7 @@ if selected == "Get Prediction":
                 
                 #display the predicted selling price 
                 st.subheader(f"Predicted Resale price is: :green[{resale_price:.2f}]")
-
-# set up the information for 'Home' menu
+    # set up the information for 'Home' menu
 if selected == "Home":
 
     st.subheader(':orange[About HDB]')
