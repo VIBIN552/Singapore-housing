@@ -5,26 +5,21 @@ import datetime
 import pickle
 
 
+# Setting streamlit page
 
+st.set_page_config(layout="wide")
+st.title("Singapore Flat Resale Price Predict")
 
+# setting up side bar for option menu
 
-
-
-
-
-#setting up streamlit page
-
-st.set_page_config(layout= "wide")
-st.title("SINGAPORE RESALE FLAT PRICES PREDICTING ")
-
-#set up the sidebar with optionmenu
 with st.sidebar:
     selected = option_menu(
-        menu_title="Main Menu",  
-        options=["Home", "Get Prediction", "About"]
-        )
+        menu_title= "Main Menu",
+        options= ["HOME","GET PREDICTION","ABOUT"]
+    )
     
 #user input values for selectbox and encoded for respective features
+
 class option:
 
     option_months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
@@ -135,9 +130,8 @@ if selected == "GET PREDICTION":
                 
                 #display the predicted selling price 
                 st.subheader(f"Predicted Resale price is: :green[{resale_price:.2f}]")
-    # set up the information for 'Home' menu
-if selected == "Home":
-
+    
+if selected == "HOME":
     st.subheader(':orange[About HDB]')
 
     st.markdown('''<h6 style='color:#D0D3D4;font-size:20px'> The Housing & Development Board (HDB; often referred to as the Housing Board),
@@ -199,8 +193,8 @@ if selected == "Home":
     with col2:
             st.video('https://youtu.be/wh9q0GGi7y0?si=ofwyNqkJal60MBxt')    
             
-#set up information for 'About' menu 
-if selected == "About":
+  #set up information for 'About' menu 
+if selected == "ABOUT":
     st.subheader(':orange[Project Title :]')
     st.markdown('<h5>  Singapore  Resale Flat Prices Predicting',unsafe_allow_html=True)
 
@@ -237,7 +231,7 @@ if selected == "About":
     st.subheader(':orange[About :]')
     st.markdown('''**Hello! I'm Vibin, a EEE graduate with a keen interest in data science and analytics.
                 Currently on an exciting journey into the world of data science...**''')            
-    
+          
 from flask import Flask
 
 app = Flask(__name__)
